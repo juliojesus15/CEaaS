@@ -11,10 +11,15 @@ export const Main =  () => {
         //console.log(process.env.REACT_APP_IP_ADDRESS ) 
         //console.log(process.env.REACT_APP_PORT_NUMBER ) 
         //console.log(inputCode)        
-        const URL = `http://${process.env.REACT_APP_IP_ADDRESS}:${process.env.REACT_APP_PORT_NUMBER}/api-example`        
-        const query = await fetch(URL)
-        const data = await query.json()
-        setCode(data.message)
+        try {
+            const URL = `http://${process.env.REACT_APP_IP_ADDRESS}:${process.env.REACT_APP_PORT_NUMBER}/api-example`        
+            const query = await fetch(URL)
+            const data = await query.json()
+            setCode(data.message)            
+          } catch (error) {
+            setCode(error);                        
+          }
+          
     }
     
 
