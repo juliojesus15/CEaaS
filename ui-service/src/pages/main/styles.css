@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
+
+body {
+    background-color:#eaeaea;
+}
+
+.main-title {
+    font-family: 'League Gothic', sans-serif;
+    color: #454545;    
+}
