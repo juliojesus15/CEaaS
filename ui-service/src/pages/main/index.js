@@ -7,15 +7,35 @@ import './styles.css'
 export const Main =  () => {
     const [code, setCode] = useState()
 
+    //const formData  = new FormData();
+
+    
     const handleCode = async (inputCode) => {                        
         //console.log(process.env.REACT_APP_IP_ADDRESS ) 
         //console.log(process.env.REACT_APP_PORT_NUMBER ) 
-        //console.log(inputCode)        
+        console.log('InputCode: ', inputCode)
+        let test = inputCode
+        //formData.append('text_code', inputCode)
+        //console.log("FormData: ", formData.get('text_code'))
+        const URL = `http://${process.env.REACT_APP_IP_ADDRESS}:${process.env.REACT_APP_PORT_NUMBER}/run`        
+        console.log("URL: ", URL);
         try {
-            const URL = `http://${process.env.REACT_APP_IP_ADDRESS}:${process.env.REACT_APP_PORT_NUMBER}/api-example`        
-            const query = await fetch(URL)
+            const params = {                
+                method: "POST",                
+                mode:'cors',                                
+                headers: {
+                    'Access-Control-Allow-Origin':'*',
+                    'Access-Control-Allow-Headers': "*",                    
+                    "Content-Type": "application/json"
+                },    
+                body: JSON.stringify({                     
+                    'text_code': test
+                })
+            }
+            const query = await fetch(URL, params)
             const data = await query.json()
-            setCode(data.message)            
+            //console.log('Query: ', query)
+            setCode(data.output)            
           } catch (error) {
             setCode(error);                        
           }

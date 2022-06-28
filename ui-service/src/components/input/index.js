@@ -6,7 +6,6 @@ export const InputPython = ({ handleCode }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         handleCode(inputCode)
-        //console.log(`Codigo python hijo: ${inputCode}`)
     }
 
     return (
