@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:  
+  name: minimal-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /api-example
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-service
+            port: 
+              number: 5001
+

@@ -1,0 +1,26 @@
+apiVersion: apps/v1             # Versión de kubernetes
+kind: Deployment                # Tipo de Objeto 
+metadata:                       # Información adicional
+  name: ui-deployment           # Nombre del despliegue
+  labels:                       # Etiquetas con clave valor, sirven para identificar       
+    app: ui-deployment          # Etiqueta para el despliegue
+spec:                           # Especificaciones del despliegue
+  replicas: 2                   # Número de replicas que tendrá este pod
+  selector:                     # Es la forma primitiva de hacer referencia, es como un id interno
+    matchLabels:                # 
+      app: ui-deployment        # Etiqueta para que otros objetos de kubernetes lo encuentren
+  template:                     # Es la configuración final del pod 
+    metadata:                   # Tiene su propia metadata para la plantilla o pod
+      labels:                   # 
+        app: ui-deployment      # Etiqueta del contenedor
+    spec:                       # Tiene sus especificaciones
+      containers:               # Información del contenedors o mas si el pod tiene muchos
+      - name: ui-deployment          # Nombre del contenedor
+        image: docker.io/juliojesus15/ui:v4    # url de imagen, docker hub defautl
+        env:
+          - name: REACT_APP_IP_ADDRESS
+            value: "34.133.207.194"
+          - name: REACT_APP_PORT_NUMBER
+            value: "5001"
+        ports:                  # puertos
+        - containerPort: 3000   # puerto 80
