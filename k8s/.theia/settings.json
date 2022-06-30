@@ -1,5 +1,0 @@
-{
-    "redhat.telemetry.enabled": false,
-    "csharp.suppressDotnetRestoreNotification": false,
-    "workbench.colorTheme": "Visual Studio Dark"
-}
