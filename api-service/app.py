@@ -25,7 +25,7 @@ def run_code():
     output = ""
     with redirect_stdout(f):
         try:
-            exec(text_code)
+            eval(text_code)
             output = f.getvalue()
         except SyntaxError as err:
             output = '[Line %s]: %s' % (err.lineno, err.msg)
