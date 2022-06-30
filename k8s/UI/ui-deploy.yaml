@@ -19,7 +19,7 @@ spec:                           # Especificaciones del despliegue
         image: docker.io/juliojesus15/ui:v4    # url de imagen, docker hub defautl
         env:
           - name: REACT_APP_IP_ADDRESS
-            value: "34.133.207.194"
+            value: "34.132.191.42"
           - name: REACT_APP_PORT_NUMBER
             value: "5001"
         ports:                  # puertos

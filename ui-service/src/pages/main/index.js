@@ -6,18 +6,10 @@ import './styles.css'
 
 export const Main =  () => {
     const [code, setCode] = useState()
-
-    //const formData  = new FormData();
-
     
     const handleCode = async (inputCode) => {                        
-        //console.log(process.env.REACT_APP_IP_ADDRESS ) 
-        //console.log(process.env.REACT_APP_PORT_NUMBER ) 
-        console.log('InputCode: ', inputCode)
-        let test = inputCode
-        //formData.append('text_code', inputCode)
-        //console.log("FormData: ", formData.get('text_code'))
         const URL = `http://${process.env.REACT_APP_IP_ADDRESS}:${process.env.REACT_APP_PORT_NUMBER}/run`        
+        let test = inputCode        
         console.log("URL: ", URL);
         try {
             const params = {                
@@ -34,14 +26,11 @@ export const Main =  () => {
             }
             const query = await fetch(URL, params)
             const data = await query.json()
-            //console.log('Query: ', query)
             setCode(data.output)            
           } catch (error) {
             setCode(error);                        
-          }
-          
-    }
-    
+          }          
+    }    
 
     return (
         <div className="container-fluid">

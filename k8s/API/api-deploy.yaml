@@ -1,21 +1,31 @@
 apiVersion: apps/v1             # Versión de kubernetes
 kind: Deployment                # Tipo de Objeto 
 metadata:                       # Información adicional
-  name: api-deployment         # Nombre del despliegue
+  name: api-deployment          # Nombre del despliegue
   labels:                       # Etiquetas con clave valor, sirven para identificar       
-    app: api-deployment               # Etiqueta para el despliegue
+    app: api-deployment         # Etiqueta para el despliegue
 spec:                           # Especificaciones del despliegue
-  replicas: 2                   # Número de replicas que tendrá este pod
+  replicas: 1                   # Número de replicas que tendrá este pod
   selector:                     # Es la forma primitiva de hacer referencia, es como un id interno
     matchLabels:                # 
-      app: api-deployment            # Etiqueta para que otros objetos de kubernetes lo encuentren
+      app: api-deployment       # Etiqueta para que otros objetos de kubernetes lo encuentren
   template:                     # Es la configuración final del pod 
     metadata:                   # Tiene su propia metadata para la plantilla o pod
       labels:                   # 
-        app: api-deployment           # Etiqueta del contenedor
+        app: api-deployment     # Etiqueta del contenedor
     spec:                       # Tiene sus especificaciones
       containers:               # Información del contenedors o mas si el pod tiene muchos
-      - name: api-deployment          # Nombre del contenedor
+      - name: api-deployment    # Nombre del contenedor
         image: docker.io/oscarchs/backend-interpreter    # url de imagen, docker hub defautl
+        env:
+          - name: MAX_LOOP
+            value: "10000"      
         ports:                  # puertos
         - containerPort: 5001   # puerto 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "200m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
