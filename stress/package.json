@@ -1,5 +1,5 @@
 {
-  "name": "stressor",
+  "name": "script-stress",
   "version": "1.0.0",
   "description": "Stressor",
   "main": "index.js",
